@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const SendGridApi = require('./services/sendGridApi.js');
+const SendGridApi = require('./sendGridApi.js');
 
 // Load environment variables from .env file
 dotenv.config();
