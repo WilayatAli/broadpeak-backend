@@ -2,7 +2,6 @@ const express = require('express');
 const dotenv = require('dotenv');
 const SendGridApi = require('./sendGridApi.js');
 
-// Load environment variables from .env file
 dotenv.config();
 
 const app = express();
@@ -26,6 +25,10 @@ app.post('/send-email', async (req, res) => {
     } catch (error) {
         res.status(500).send('Internal Server Error');
     }
+});
+
+app.get('/', (req, res) => {
+    res.send('🦄🌈✨👋🌎🌍🌏✨🌈🦄');
 });
 
 const port = process.env.PORT || 3000;
