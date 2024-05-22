@@ -1,9 +1,13 @@
 const express = require('express');
 const serverless = require('serverless-http');
+const cors = require('cors');
 const SendGridApi = require('./sendGridApi');
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
+app.options('*', cors());
 
 const config = {
     SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
