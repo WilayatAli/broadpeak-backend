@@ -8,7 +8,7 @@ class SendGridApi {
         this.config = config;
     }
 
-    async sendEmail(subject, receiverData, templateData, attachments) {
+    async sendEmail(subject, templateData, attachments) {
         try {
             const { template_id, ...dynamic_template_data } = templateData || {};
             const options = {
@@ -23,7 +23,10 @@ class SendGridApi {
                     personalizations: [
                         {
                             subject,
-                            to: [receiverData],
+                            to: [{
+                                email: process.env.SENDGRID_SENDER,
+                                name: process.env.SENDGRID_SENDER_NAME
+                            }],
                             dynamic_template_data,
                         }
                     ],
